@@ -1,0 +1,1124 @@
+/* ==========================================================================
+   1. RESET E VARIÁVEIS DE DESIGN
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: #e31c23;
+    --red-hover: #c11218;
+    --black: #212121;
+    --white: #ffffff;
+    --gray-dark: #141414;
+    --gray-light: #e5e5e5;
+    --bg-body: #1a1a1a;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow-card: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', 'Roboto', 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .subtitulo {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.ponto:focus-visible {
+    outline: 3px solid var(--white);
+    outline-offset: 4px;
+}
+
+/* ==========================================================================
+   2. HEADER FIXO E NAVEGAÇÃO
+   ========================================================================== */
+.cabecalho {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--gray-dark);
+    border-bottom: 3px solid var(--red);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.cabecalho .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.brand-logo h1 {
+    color: var(--white);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.brand-logo img {
+    max-height: 80px;
+    width: auto;
+    display: block;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.menu a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 6px;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.menu a:hover,
+.menu a.active {
+    color: var(--red);
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--red);
+    transition: width var(--transition-normal);
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   3. CARROSSEL 100% CSS
+   ========================================================================== */
+.carrossel-container input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.carrossel-container {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: 400px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.carrossel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-legenda {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 20px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    color: var(--white);
+}
+
+.slide-legenda h2 {
+    color: var(--red);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.slide-legenda p {
+    font-size: 1rem;
+    color: var(--gray-light);
+}
+
+#slide1:checked ~ .carrossel-slides .slide-1,
+#slide2:checked ~ .carrossel-slides .slide-2,
+#slide3:checked ~ .carrossel-slides .slide-3 {
+    opacity: 1;
+    visibility: visible;
+}
+
+.carrossel-indicadores {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.ponto {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background-color var(--transition-normal), transform var(--transition-fast);
+}
+
+.ponto:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+#slide1:checked ~ .carrossel-indicadores label[for="slide1"],
+#slide2:checked ~ .carrossel-indicadores label[for="slide2"],
+#slide3:checked ~ .carrossel-indicadores label[for="slide3"] {
+    background-color: var(--red);
+    transform: scale(1.2);
+}
+
+/* ==========================================================================
+   4. ESTRUTURA MAIN E SEÇÕES GERAIS
+   ========================================================================== */
+main {
+    padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+.secao-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.secao-header h1,
+.secao-header h2 {
+    font-size: 3rem;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.secao-header p {
+    font-size: 1.2rem;
+    color: var(--gray-light);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.subtitulo {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 15px;
+    border-left: 4px solid var(--red);
+    padding-left: 12px;
+}
+
+.secao-destaque,
+.caixa {
+    background-color: var(--black);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-card);
+}
+
+.textos p {
+    color: var(--gray-light);
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.textos a {
+    color: var(--red);
+    text-decoration: underline;
+}
+
+.lista-oferecimentos {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.lista-oferecimentos li {
+    margin-bottom: 12px;
+    color: var(--gray-light);
+}
+
+.lista-oferecimentos i {
+    color: var(--red);
+    margin-right: 8px;
+}
+
+/* ==========================================================================
+   5. LANDING PAGE (index)
+   ========================================================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseRed {
+    0% {
+        box-shadow: 0 0 0 0 rgba(227, 28, 35, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(227, 28, 35, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(227, 28, 35, 0);
+    }
+}
+
+.hero {
+    position: relative;
+    min-height: calc(85vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #2a0809 0%, var(--black) 100%);
+    border-bottom: 1px solid rgba(227, 28, 35, 0.2);
+}
+
+.hero-conteudo {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.tag-hero {
+    display: inline-block;
+    background-color: rgba(227, 28, 35, 0.15);
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero-titulo {
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    line-height: 1.15;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.hero-descricao {
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    color: var(--gray-light);
+    margin: 0 auto 35px;
+    max-width: 700px;
+}
+
+.hero-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.btn-principal {
+    background-color: var(--red);
+    color: var(--white);
+    animation: pulseRed 2s infinite;
+}
+
+.btn-principal:hover {
+    background-color: var(--red-hover);
+    transform: translateY(-3px);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secundario:hover {
+    border-color: var(--white);
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-3px);
+}
+
+.diferenciais {
+    padding: 80px 20px;
+}
+
+.grade-diferenciais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.cartao-diferencial {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: 35px 25px;
+    text-align: center;
+    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.cartao-diferencial:hover {
+    transform: translateY(-10px);
+    border-color: var(--red);
+    box-shadow: 0 10px 30px rgba(227, 28, 35, 0.2);
+}
+
+.icone-diferencial {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(227, 28, 35, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.icone-diferencial i {
+    font-size: 2rem;
+    color: var(--red);
+}
+
+.cartao-diferencial h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.cartao-diferencial p {
+    color: var(--gray-light);
+    font-size: 0.95rem;
+}
+
+.cta-banner {
+    background: linear-gradient(135deg, var(--gray-dark) 0%, #3a0003 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.cta-conteudo h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 10px;
+}
+
+.cta-conteudo p {
+    color: var(--gray-light);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.btn-cta {
+    display: inline-block;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   6. VITRINE DE PRODUTOS E CARDS
+   ========================================================================== */
+.grade-produtos,
+.lista-bomboniere {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.lista-filmes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.cartao-produto {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--black);
+    border: 1px solid var(--gray-dark);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    padding: 25px;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.cartao-produto:hover {
+    transform: translateY(-8px);
+    border-color: var(--red);
+    box-shadow: 0 12px 30px rgba(227, 28, 35, 0.15);
+}
+
+.cartao-produto img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    margin-bottom: 15px;
+}
+
+.produto-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cartao-produto h3 {
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.cartao-produto p {
+    color: var(--gray-light);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.produto-acoes {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartao-produto .preco {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--red);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.btn-comprar,
+.cartao-produto button {
+    background-color: transparent;
+    color: var(--red);
+    border: 2px solid var(--red);
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-comprar:hover,
+.cartao-produto button:hover {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.categoria,
+.tag-especial,
+.tag-assinatura {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.categoria { color: var(--gray-light); }
+.tag-especial, .tag-assinatura { color: var(--red); }
+
+/* ==========================================================================
+   7. CONTATO E FORMULÁRIO
+   ========================================================================== */
+.grade-contato {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.form-atendimento {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-grupo label {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.campo-grupo input,
+.campo-grupo textarea {
+    background-color: var(--gray-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 12px 15px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.campo-grupo input:focus,
+.campo-grupo textarea:focus {
+    outline: none;
+    border-color: var(--red);
+    box-shadow: 0 0 8px rgba(227, 28, 35, 0.3);
+}
+
+#contato {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.contato-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast);
+}
+
+.contato-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.contato-item i {
+    color: var(--red);
+    font-size: 1.4rem;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.contato-item a,
+.contato-item span {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.contato-item a:hover {
+    color: var(--red);
+}
+
+.secao-mapa {
+    margin-bottom: 40px;
+}
+
+.mapa-container {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 15px;
+}
+
+.mapa-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: var(--radius-md);
+    margin-top: 30px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ==========================================================================
+   8. RODAPÉ
+   ========================================================================== */
+.rodape {
+    background-color: var(--black);
+    color: var(--white);
+    padding-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rodape-conteudo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.rodape-titulo {
+    color: var(--red);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.rodape-subtitulo {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-left: 3px solid var(--red);
+    padding-left: 10px;
+}
+
+.rodape-descricao,
+.rodape-contato-rapido {
+    font-size: 0.9rem;
+    color: var(--gray-light);
+    line-height: 1.8;
+}
+
+.rodape-links {
+    list-style: none;
+}
+
+.rodape-links li {
+    margin-bottom: 10px;
+}
+
+.rodape-links a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    display: inline-block;
+}
+
+.rodape-links a:hover {
+    color: var(--red);
+    transform: translateX(5px);
+}
+
+.rodape-redes {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: transform var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.btn-social:hover {
+    background-color: var(--red);
+    border-color: var(--red);
+    transform: translateY(-3px);
+}
+
+.rodape-bottom {
+    background-color: var(--gray-dark);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888888;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   9. CATÁLOGO — SCROLL HORIZONTAL DE FILMES (SOMENTE CSS)
+   ========================================================================== */
+.secao-catalogo {
+    padding: 40px 0;
+}
+
+.secao-catalogo .secao-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ---------- container do carrossel ---------- */
+.carrossel-filmes {
+    position: relative;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+/* ---------- faixa de scroll horizontal ---------- */
+.lista-filmes-scroll {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 10px 20px 25px 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* cards com largura fixa dentro do scroll — mesmo tamanho do grid original */
+.lista-filmes-scroll .cartao-produto {
+    flex: 0 0 260px;
+    min-width: 260px;
+    max-width: 260px;
+    scroll-snap-align: start;
+}
+
+/* ---------- scrollbar customizada — Chrome / Edge / Safari ---------- */
+.lista-filmes-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.lista-filmes-scroll::-webkit-scrollbar-track {
+    background: var(--gray-dark);
+    border-radius: 4px;
+}
+
+.lista-filmes-scroll::-webkit-scrollbar-thumb {
+    background: var(--red);
+    border-radius: 4px;
+}
+
+.lista-filmes-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--red-hover);
+}
+
+/* ---------- scrollbar customizada — Firefox ---------- */
+.lista-filmes-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--red) var(--gray-dark);
+}
+
+/* ---------- fade nas bordas — dica visual de que há mais filmes ---------- */
+.carrossel-filmes::before,
+.carrossel-filmes::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 8px;
+    width: 50px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.carrossel-filmes::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-body), transparent);
+}
+
+.carrossel-filmes::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-body), transparent);
+}
+
+/* ---------- seção Recomendados — visual diferenciado ---------- */
+.secao-recomendados {
+    background: linear-gradient(180deg, rgba(227, 28, 35, 0.06) 0%, transparent 100%);
+    border-top: 1px solid rgba(227, 28, 35, 0.15);
+    border-bottom: 1px solid rgba(227, 28, 35, 0.15);
+    padding: 50px 0;
+}
+
+.secao-recomendados .secao-header h2 {
+    color: var(--red);
+}
+
+.secao-recomendados .secao-header h2 i {
+    margin-right: 10px;
+    font-size: 0.85em;
+}
+
+/* ==========================================================================
+   10. MEDIA QUERIES (RESPONSIVIDADE COMPLETA)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .cabecalho {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .cabecalho .container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    main {
+        padding-top: 140px;
+    }
+
+    .secao-header h1,
+    .secao-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .diferenciais {
+        padding: 50px 20px;
+    }
+
+    .carrossel-container {
+        height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    .brand-logo img {
+        max-height: 50px;
+    }
+
+    .menu ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu a {
+        font-size: 0.85rem;
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-hero {
+        justify-content: center;
+    }
+
+    .carrossel-container {
+        height: 250px;
+    }
+
+    .slide-legenda h2 {
+        font-size: 1.3rem;
+    }
+
+    .slide-legenda p {
+        font-size: 0.85rem;
+    }
+
+    .grade-contato {
+        grid-template-columns: 1fr;
+    }
+
+    .mapa-container {
+        height: 300px;
+    }
+
+    .grade-produtos,
+    .lista-filmes,
+    .lista-bomboniere {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 18px;
+    }
+
+    .cartao-produto {
+        padding: 18px;
+    }
+
+    /* ---- scroll horizontal tablet ---- */
+    .lista-filmes-scroll .cartao-produto {
+        flex: 0 0 200px;
+        min-width: 200px;
+        max-width: 200px;
+    }
+
+    .lista-filmes-scroll {
+        gap: 16px;
+        padding: 10px 10px 20px 10px;
+    }
+
+    .carrossel-filmes::before,
+    .carrossel-filmes::after {
+        width: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grade-produtos,
+    .lista-filmes,
+    .lista-bomboniere,
+    .grade-diferenciais {
+        grid-template-columns: 1fr;
+    }
+
+    .secao-header h1,
+    .secao-header h2 {
+        font-size: 1.75rem;
+        letter-spacing: 1px;
+    }
+
+    .secao-destaque,
+    .caixa,
+    .cartao-diferencial {
+        padding: 20px;
+    }
+
+    /* ---- scroll horizontal mobile ---- */
+    .lista-filmes-scroll .cartao-produto {
+        flex: 0 0 170px;
+        min-width: 170px;
+        max-width: 170px;
+    }
+
+    .lista-filmes-scroll .cartao-produto img {
+        height: 160px;
+    }
+
+    .lista-filmes-scroll .cartao-produto h3 {
+        font-size: 1rem;
+    }
+
+    .lista-filmes-scroll .cartao-produto .preco {
+        font-size: 1.1rem;
+    }
+
+    .secao-catalogo .secao-header h1,
+    .secao-catalogo .secao-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .carrossel-filmes::before,
+    .carrossel-filmes::after {
+        width: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}

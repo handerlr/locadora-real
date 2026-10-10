@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Locadora Real</title>
+
+    <!-- Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../img/Logo/Logo-transp.png">
+
+</head>
+
+<body class="pagina-contato">
+    <!-- Cabeçalho Principal -->
+    <header class="cabecalho">
+        <div class="container">
+            <a href="../index.html" class="brand-logo">
+                <img src="../img/Logo/Logomarca-horizontal-transp.png" alt="Locadora Real">
+            </a>
+
+            <nav class="menu" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="locacao.html">Locação</a></li>
+                    <li><a href="loja.html">Loja</a></li>
+                    <li><a href="contato.html" class="active">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <header class="secao-header cabecalho-pagina">
+            <p class="sobretitulo">Fale com a Locadora Real</p>
+            <h1>Nosso Contato e Localização</h1>
+            <p>Venha nos visitar ou envie uma mensagem direta para a nossa equipe.</p>
+        </header>
+
+        <!-- Bloco Duplo: Formulário + Dados de Contato -->
+        <section class="grade-contato">
+
+            <!-- Formulário de Mensagem Direta -->
+            <div class="caixa formulario-contato">
+                <h3 class="subtitulo">Envie uma Mensagem</h3>
+                <form action="#" method="POST" class="form-atendimento">
+                    <div class="campo-grupo">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@dominio.com" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="mensagem-texto">Mensagem</label>
+                        <textarea id="mensagem-texto" name="mensagem" rows="5" placeholder="Como podemos te ajudar?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-comprar">Enviar Mensagem</button>
+                </form>
+            </div>
+
+            <!-- Informações Rápidas de Contato -->
+            <div class="caixa informacoes-contato">
+                <h3 class="subtitulo">Informações de Atendimento</h3>
+                <div id="contato">
+                    <div class="contato-item">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <a href="https://maps.app.goo.gl/WMkkHsL44uNXyNC1A" target="_blank" rel="noopener noreferrer">
+                            R. Itajubá, 115 - Imbiribeira, Recife - PE
+                        </a>
+                    </div>
+
+                    <div class="contato-item">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <a href="tel:+55485413859111">(48) 54138-59111</a>
+                    </div>
+
+                    <div class="contato-item">
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:contato@reallocadora.com">contato@reallocadora.com</a>
+                    </div>
+
+                    <div class="contato-item">
+                        <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                        <span>Seg - Sáb: 10h às 22h</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Mapa Responsivo Integrado -->
+        <section class="secao-mapa">
+            <h3 class="subtitulo">Como Chegar</h3>
+            <div class="mapa-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.921345945493!2d-34.9102996!3d-8.1094914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab1eff61914273%3A0xe24af3be25816bc4!2sReal%20Locadora%20de%20Equipamentos!5e0!3m2!1spt-BR!2sbr!4v1789067021910!5m2!1spt-BR!2sbr"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Mapa de localização da Locadora Real">
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé Padronizado -->
+    <footer class="rodape">
+        <div class="container rodape-conteudo">
+            <div class="rodape-bloco">
+                <h2 class="rodape-titulo">Locadora Real</h2>
+                <p class="rodape-descricao">
+                    <i class="fa-solid fa-film"></i> Sua locadora de filmes de confiança desde 1990.
+                </p>
+                <p class="rodape-contato-rapido">
+                    <i class="fa-solid fa-location-dot"></i> Recife - PE<br>
+                    <i class="fa-solid fa-phone"></i> (48) 54138-59111
+                </p>
+            </div>
+
+            <nav class="rodape-bloco" aria-label="Navegação do rodapé">
+                <h3 class="rodape-subtitulo">Links Úteis</h3>
+                <ul class="rodape-links">
+                    <li><a href="sobre.html"><i class="fa-solid fa-chevron-right"></i> Sobre Nós</a></li>
+                    <li><a href="locacao.html"><i class="fa-solid fa-chevron-right"></i> Locação</a></li>
+                    <li><a href="loja.html"><i class="fa-solid fa-chevron-right"></i> Loja</a></li>
+                    <li><a href="contato.html"><i class="fa-solid fa-chevron-right"></i> Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="rodape-bloco">
+                <h3 class="rodape-subtitulo">Siga-nos</h3>
+                <div class="rodape-redes">
+                    <a href="https://www.instagram.com/" aria-label="Instagram" class="btn-social" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/" aria-label="Facebook" class="btn-social" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/" aria-label="YouTube" class="btn-social" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.whatsapp.com/" aria-label="WhatsApp" class="btn-social" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="rodape-bottom">
+            <div class="container">
+                <p>&copy; 1990-2026 Locadora Real. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

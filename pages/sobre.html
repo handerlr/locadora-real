@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós | Locadora Real</title>
+
+    <!-- Font Awesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../img/Logo/Logo-transp.png">
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header class="cabecalho">
+        <div class="container">
+            <!-- Logo / Marca -->
+            <a href="../index.html" class="brand-logo">
+                <img src="../img/Logo/Logomarca-horizontal-transp.png" alt="Locadora Real">
+            </a>
+
+            <!-- Navegação Principal -->
+            <nav class="menu" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="sobre.html" class="active">Sobre</a></li>
+                    <li><a href="locacao.html">Locação</a></li>
+                    <li><a href="loja.html">Loja</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container">
+
+        <!-- Carrossel -->
+        <section class="carrossel-container">
+            <!-- Controles invisíveis do carrossel -->
+            <input type="radio" name="carrossel-radio" id="slide1" checked>
+            <input type="radio" name="carrossel-radio" id="slide2">
+            <input type="radio" name="carrossel-radio" id="slide3">
+
+            <!-- Slides / Imagens -->
+            <div class="carrossel-slides">
+                <div class="slide slide-1">
+                    <img src="../img/Slides/banner1.jpg" alt="Lançamentos do Mês">
+                    <div class="slide-legenda">
+                        <h2>Lançamentos Imperdíveis</h2>
+                        <p>Confira os últimos títulos que chegaram ao nosso acervo.</p>
+                    </div>
+                </div>
+
+                <div class="slide slide-2">
+                    <img src="../img/Slides/banner2.jpg" alt="Clássicos do Cinema">
+                    <div class="slide-legenda">
+                        <h2>Clássicos Atemporais</h2>
+                        <p>Reviva os momentos marcantes da história do cinema.</p>
+                    </div>
+                </div>
+
+                <div class="slide slide-3">
+                    <img src="../img/Slides/banner3.jpg" alt="Promoções da Loja">
+                    <div class="slide-legenda">
+                        <h2>Ofertas Especiais</h2>
+                        <p>Filmes e colecionáveis com preços exclusivos na loja.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicadores / Pontos de Navegação -->
+            <div class="carrossel-indicadores">
+                <label for="slide1" class="ponto" aria-label="Exibir lançamentos imperdíveis"></label>
+                <label for="slide2" class="ponto" aria-label="Exibir clássicos atemporais"></label>
+                <label for="slide3" class="ponto" aria-label="Exibir ofertas especiais"></label>
+            </div>
+        </section>
+
+        <h1 class="titulo-pagina">Venha nos Conhecer!</h1>
+
+        <!-- Convite -->
+        <section id="convite" class="secao-destaque">
+            <h2 class="subtitulo">Sabe aquela sensação de passar horas escolhendo algo para assistir e terminar sem ver nada?</h2>
+
+            <div class="textos">
+                <p>Na Locadora-Real, a gente resolve isso. Se você é do tipo que não abre mão de um filme bom de verdade, com imagem impecável e aquela história que prende do início ao fim, veio ao lugar certo.</p>
+                <p>Prepara a pipoca e vem com a gente: você pode navegar agora mesmo pela nossa área de <a href="locacao.html">locação</a> para escolher o sucesso do momento ou aquele clássico esquecido. Se você ama a nostalgia de olhar as capas e bater um papo sobre cinema, dê um pulo na nossa <a href="loja.html">loja física</a>. O seu próximo filme favorito está te esperando!</p>
+            </div>
+        </section>
+
+        <!-- Apresentação da Empresa -->
+        <section class="secao-sobre">
+            <article class="caixa">
+                <h2 class="subtitulo">Quem Somos</h2>
+                <div class="textos">
+                    <p>A Locadora-Real nasceu da paixão absoluta pela sétima arte e do desejo de conectar pessoas às melhores histórias do cinema e da televisão. Somos a sua melhor opção para alugar filmes e séries, oferecendo uma experiência única que resgata a magia de escolher o próximo título para assistir no conforto de casa.</p>
+                    <p>Nossa equipe é formada por especialistas e amantes do cinema que entendem que um filme não é apenas entretenimento, mas uma forma de arte capaz de inspirar, emocionar e transformar o dia de alguém. Curamos conteúdos de qualidade para garantir que cada cliente encontre exatamente o que precisa.</p>
+                </div>
+            </article>
+
+            <article class="caixa">
+                <h2 class="subtitulo">O Que Oferecemos</h2>
+                <div class="textos">
+                    <p>Acreditamos na diversidade e na pluralidade cultural. Nosso acervo é atualizado constantemente e abrange uma imensa variedade de gêneros e formatos, incluindo:</p>
+                    <ul class="lista-oferecimentos">
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Grandes Clássicos:</strong> Obras-primas atemporais que marcaram a história do cinema;</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Lançamentos Recentes:</strong> Os blockbusters recém-saídos dos cinemas;</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Séries Completas:</strong> Temporadas inteiras das produções mais aclamadas;</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Cinema Independente e Cult:</strong> Narrativas profundas fora do circuito comercial;</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Conteúdo Infantil:</strong> Uma seleção segura, divertida e educativa para toda a família.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="caixa">
+                <h2 class="subtitulo">Nossa Missão e Valores</h2>
+                <div class="textos">
+                    <p>O compromisso da Locadora-Real é com a excelência no atendimento e a total satisfação dos nossos clientes. Prezamos pela praticidade no processo de locação, alta qualidade de áudio e vídeo e preço justo. Mais do que alugar filmes, nossa missão é criar momentos inesquecíveis.</p>
+                </div>
+            </article>
+
+            <!-- Player de Vídeo Responsivo -->
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/bvoa5QI5nDk?si=C93VCv7IPdCqqx6w"
+                    title="Vídeo institucional Locadora Real"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+        <div class="container rodape-conteudo">
+            <div class="rodape-bloco">
+                <h2 class="rodape-titulo">Locadora Real</h2>
+                <p class="rodape-descricao">
+                    <i class="fa-solid fa-film"></i> Sua locadora de filmes de confiança desde 1990.
+                </p>
+                <p class="rodape-contato-rapido">
+                    <i class="fa-solid fa-location-dot"></i> Recife - PE<br>
+                    <i class="fa-solid fa-phone"></i> (48) 54138-59111
+                </p>
+            </div>
+
+            <nav class="rodape-bloco" aria-label="Navegação do rodapé">
+                <h3 class="rodape-subtitulo">Links Úteis</h3>
+                <ul class="rodape-links">
+                    <li><a href="sobre.html"><i class="fa-solid fa-chevron-right"></i> Sobre Nós</a></li>
+                    <li><a href="locacao.html"><i class="fa-solid fa-chevron-right"></i> Locação</a></li>
+                    <li><a href="loja.html"><i class="fa-solid fa-chevron-right"></i> Loja</a></li>
+                    <li><a href="contato.html"><i class="fa-solid fa-chevron-right"></i> Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="rodape-bloco">
+                <h3 class="rodape-subtitulo">Siga-nos</h3>
+                <div class="rodape-redes">
+                    <a href="https://www.instagram.com/" aria-label="Instagram" class="btn-social" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/" aria-label="Facebook" class="btn-social" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/" aria-label="YouTube" class="btn-social" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.whatsapp.com/" aria-label="WhatsApp" class="btn-social" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="rodape-bottom">
+            <div class="container">
+                <p>&copy; 1990-<span id="ano-atual">2026</span> Locadora Real. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
